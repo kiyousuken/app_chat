@@ -17,10 +17,16 @@
         ul {
             list-style-type: none;
             padding: 20px;
-            background: #000;
+            background: #fff;
             color: white;
         }
+        ul > li {
+            color: #F7A934;
+            padding: 15px;
+            border: 1px solid #ddd;
+        }
         #controls {
+            border-top: 1px solid #ddd;
             position: absolute;
             bottom: 0px;
             left: 0px;
@@ -57,6 +63,7 @@
         #info {
             padding: 15px 10px;
             background: #FFF;
+            border-bottom: 1px solid #ddd;
         }
         #user_name , #user_cnt {
             color: #95989A;
@@ -102,12 +109,12 @@
     <!--ここで作ったイベント名でサーバーサイドの処理を紐付ける-->
     socket.on('welcome', function() {
         <!-- 取得したメッセージをulに追加 -->
-        $('#message').append($('<li>').text('ようこそ！！'));
+        $('#message').append($('<li>').text('わちゃわちゃしたいひとあつまれっ'));
     });
 
     socket.on('user cnt', function(cnt) {
         <!-- 取得したメッセージをulに追加 -->
-        $('#user_cnt p').html('').text("(A :" + cnt.a +"人) (B :" + cnt.b + "人)");
+        $('#user_cnt p').html('').text("(Aのおへやに :" + cnt.a +"人いるね) (Bのおへやに :" + cnt.b + "人いるね)");
     });
 
     socket.on('message', function(msj, id) {
@@ -133,10 +140,10 @@
 <div id="controls">
     <form action="">
         <select name="channel" id="channel">
-            <option value="A">チャンネルA</option>
-            <option value="B">チャンネルB</option>
+            <option value="A">Aのおへや</option>
+            <option value="B">Bのおへや</option>
         </select>
-        <input type="text" id="msj" placeholder="メッセージを入力してください...">
+        <input type="text" id="msj" placeholder="ここに入力してね">
         <input type="submit" id="btn" value="送信">
     </form>
 </div>
